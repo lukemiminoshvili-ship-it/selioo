@@ -3,7 +3,6 @@
  * This service handles interactions with TBC Bank Checkout API.
  */
 
-// ჩაწერე აქ TBC პორტალიდან მიღებული გასაღებები
 const TBC_APP_ID = "e34c8477-572e-402f-8c14-f76cc1747a97";
 const TBC_API_KEY = "wMnH0x3XcYN7XCJG0OBrKWrfeL7Y6yEt";
 
@@ -20,11 +19,7 @@ export const initiateTBCPayment = async (amount: number): Promise<PaymentInitiat
   console.log(`[PAYMENT] თიბისი გადახდის ინიცირება: ${amount} GEL`);
 
   try {
-    // სატესტო რეჟიმში ვიყენებთ ბანკის გადამისამართების ლინკს
-    // როცა Live რეჟიმზე გადახვალ, აქ ჩაიწერება ბანკისგან მიღებული დინამიური URL
     const tbcCheckoutUrl = `https://checkout.tbcbank.ge/checkout?client_id=${TBC_APP_ID}`;
-
-    // მომხმარებლის გადაყვანა ბანკის გვერდზე
     window.location.href = tbcCheckoutUrl;
 
     return {
@@ -41,15 +36,16 @@ export const initiateTBCPayment = async (amount: number): Promise<PaymentInitiat
 };
 
 /**
- * STRIPE PAYMENT: Placeholder for Stripe (Since direct integration in GA is limited)
+ * MOCK PAYMENT: This fixes the build error in CheckoutPage.tsx
  */
+export const initiateMockPayment = async (amount: number): Promise<PaymentInitiationResponse> => {
+  return initiateTBCPayment(amount);
+};
+
 export const initiateStripePayment = async (amount: number): Promise<PaymentInitiationResponse> => {
   return { success: false, error: "Stripe გადახდა საქართველოში შეზღუდულია." };
 };
 
-/**
- * BOG PAYMENT: Placeholder
- */
 export const initiateBOGPayment = async (amount: number): Promise<PaymentInitiationResponse> => {
   return { success: false, error: "BOG გადახდა დროებით მიუწვდომელია." };
 };
