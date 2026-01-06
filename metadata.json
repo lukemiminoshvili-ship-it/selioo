@@ -1,0 +1,7 @@
+{
+  "name": "X98Q Modern TV Box Shop",
+  "description": "A minimalist, high-performance e-commerce site for the X98Q TV Box, featuring a dark/light mode, smooth UI, and a Gemini-powered AI chatbot assistant.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
