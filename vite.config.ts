@@ -8,12 +8,13 @@ export default defineConfig(({ mode }) => {
     server: {
       port: 3000,
       host: '0.0.0.0',
-      allowedHosts: ['selioo.onrender.com'] // ნებას რთავს Render-ის ჰოსტს
+      // შეცვლილია რეალურ მისამართზე
+      allowedHosts: ['sitqvebis-t-amashi.onrender.com'] 
     },
     preview: {
       port: 10000,
       host: '0.0.0.0',
-      allowedHosts: ['selioo.onrender.com'] // ნებას რთავს Render-ის ჰოსტს preview რეჟიმში
+      allowedHosts: ['sitqvebis-t-amashi.onrender.com'] 
     },
     plugins: [react()],
     define: {
