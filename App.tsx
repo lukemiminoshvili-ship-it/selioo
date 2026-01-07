@@ -37,8 +37,8 @@ const FooterComponent: React.FC = () => (
       <div className="pt-8 border-t border-slate-100 dark:border-slate-900 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-xs">
         <div>© 2024 {SHOP_NAME}. ყველა უფლება დაცულია.</div>
         <div className="flex space-x-4">
-          <video src="video.mp4" controls alt="Visa" className="h-6 w-auto opacity-50 grayscale hover:grayscale-0 transition-all"></video>
-          <img src="https://img.icons8.com/color/48/mastercard.png" alt="Mastercard" className="h-6 w-auto opacity-50 grayscale hover:grayscale-0 transition-all" />
+          <img src="/image.webp" alt="Visa" className="h-6 w-auto opacity-50 grayscale hover:grayscale-0 transition-all" />
+          <img src="https://img.icons8.com/color/48/mastercard.png" alt="Mastercard" className="h-6 w-auto opacity-50 grayscale hover:grayscale-0 transition-all"/>
         </div>
       </div>
     </div>
