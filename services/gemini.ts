@@ -1,31 +1,30 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { PRODUCTS, DELIVERY_INFO, SHOP_NAME } from "../constants";
 
-// VITE-ის შემთხვევაში გარემოს ცვლადებს ასე ვკითხულობთ:
-const apiKey = import.meta.env.VITE_GEMINI_API_KEY || "";
+// შენი Gemini API Key
+const apiKey = "AIzaSyDBtzV5lz1C2GfZwkhyc-pU5rodW3au6CE";
 const genAI = new GoogleGenerativeAI(apiKey);
 
 const SYSTEM_INSTRUCTION = `
-You are the official AI store assistant for ${SHOP_NAME}, a premier electronics and tech shop in Georgia.
-Your goal is to help customers browse our catalog and make purchases.
+შენ ხარ ${SHOP_NAME}-ის ოფიციალური ასისტენტი. 
+მაღაზია მდებარეობს საქართველოში.
 
-CURRENT CATALOG:
-${PRODUCTS.map(p => `- ${p.name} (${p.model}): ${p.price}. Specs: ${JSON.stringify(p.specs)}`).join('\n')}
+კატალოგი:
+${PRODUCTS.map(p => `- ${p.name} (${p.model}): ${p.price}. მონაცემები: ${JSON.stringify(p.specs)}`).join('\n')}
 
-SHOP POLICIES:
-- Delivery: ${DELIVERY_INFO.time} across Georgia.
-- Payment Methods: We accept TBC Bank, Bank of Georgia (BOG), and major Credit Cards.
-- Return Policy: 14-day hassle-free returns.
+პოლიტიკა:
+- მიწოდება: ${DELIVERY_INFO.time} მთელ საქართველოში.
+- გადახდა: TBC, BOG, Stripe.
+- დაბრუნება: 14 დღე.
 
-INSTRUCTIONS:
-- Be professional, polite, and tech-savvy.
-- If a user asks about a specific product like the X98Q, provide its technical details.
-- Respond in Georgian if the user speaks Georgian, otherwise in English.
+ინსტრუქცია:
+- იყავი თავაზიანი და ტექნოლოგიებში გარკვეული.
+- უპასუხე ქართულად (თუ ინგლისურად არ მოგმართეს).
+- თუ გკითხავენ X98Q-ზე, აუხსენი რომ ეს არის საუკეთესო TV Box 140 ლარად.
 `;
 
 export const getChatResponse = async (userMessage: string, history: any[]) => {
   try {
-    // ვიყენებთ სტაბილურ მოდელს: gemini-1.5-flash
     const model = genAI.getGenerativeModel({
       model: "gemini-1.5-flash",
       systemInstruction: SYSTEM_INSTRUCTION
